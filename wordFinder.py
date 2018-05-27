@@ -1,5 +1,6 @@
 import itertools
 import re
+import unittest
 
 def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
@@ -13,6 +14,11 @@ def libraryBuilder():
 def charPermutations(chars):
     # Takes the user input and creates a list of every possible arrangement.
     # Returns a list.
+    # assert any(char.isdigit() == False for char in chars), 'No numbers allowed'
+
+    if any(char.isdigit() for char in chars):
+        raise Exception('no numbers allowed')
+
     chars = list(chars)
     words = []
     possiblewords = list(itertools.permutations(chars))
@@ -26,13 +32,25 @@ def findWordinLibrary(usrInput):
     # Returns a list of found (if any) words.
     library = libraryBuilder()
     possibleWords = charPermutations(usrInput)
+    wordsFound = []
 
-    for pw in possibleWords:
-        regex = re.compile('{}\b'.format(pw))
-        print regex
-        for word in library:
-            if regex.search(word):
-                print regex.search(word)
+    for word in possibleWords:
+        if word in library:
+            wordsFound.append(word)
 
-findWordinLibrary('aa')
+    if wordsFound:    
+        print 'found these words for ya:'
+        for word in wordsFound:
+            print '....' + word
+    else:
+        print 'No words where found!'
+    print '----------------------------------------------------------'
+
+
+if __name__ == '__main__':
+    while True:
+        print 'What characters do you want to search for?'
+        chars = raw_input()
+        findWordinLibrary(chars)
+
             
