@@ -3,6 +3,7 @@ import re
 import unittest
 
 
+# Builds a library from txt file.
 def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
     # Returns a list.
@@ -12,6 +13,8 @@ def libraryBuilder():
     return library
 
 
+# Permuates through the user input to create
+# all possible character combinations.
 def charPermutations(usrInput):
     # Takes the user input and creates a list of every possible arrangement.
     # Returns a list.
@@ -24,6 +27,7 @@ def charPermutations(usrInput):
     return words
 
 
+# Finds words in the library.
 def findWordinLibraryStandard(usrInput):
     # Finds if any of the Char Permutations found exists in the library
     # Returns a list of found (if any) words.
@@ -36,28 +40,37 @@ def findWordinLibraryStandard(usrInput):
             wordsFound.append(word)
 
     if wordsFound:
-        print 'found these words for ya:'
-        for word in wordsFound:
-            print '....' + word
+        return wordsFound
     else:
-        print 'No words where found!'
-    print '----------------------------------------------------------'
+        return None
 
 
+# Finds words in the library by doing
+# a Binary Search.
 def findWordinLibraryBinarySearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
     foundWords = []
-    u_lim = int(len(library))
+    u_lim = int(len(library))-1
     l_lim = int(0)
-    print 'Doing binary search...'
+
     for word in words:
+
         while l_lim <= u_lim:
             i = (l_lim + u_lim) // 2
-            '''
-            print i
-            print library[i], word
-            '''
+
+            if library[i] < word:
+                print i, library[i] < word
+                l_lim = i + 1
+            elif library[i] > word:
+                print i, library[i] > word
+                u_lim = i - 1
+            else:
+                foundWords.append(library[i])
+
+        '''
+        while l_lim <= u_lim:
+            i = (l_lim + u_lim) // 2
             if library[i] == word:
                 foundWords.append(word)
                 break
@@ -65,6 +78,7 @@ def findWordinLibraryBinarySearch(usrInput):
                 u_lim = i - 1
             elif library[i] < word:
                 l_lim = i + 1
+        '''
     return foundWords
 
 
@@ -77,4 +91,5 @@ if __name__ == '__main__':
         if len(chars) > 11:
             print 'no inputs above 11 chars'
         else:
-            print findWordinLibraryBinarySearch(chars)
+            print 'binary: ', findWordinLibraryBinarySearch(chars)
+            # print 'standard: ', findWordinLibraryStandard(chars)
