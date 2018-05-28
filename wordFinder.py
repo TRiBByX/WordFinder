@@ -53,8 +53,8 @@ def findWordinLibraryBinarySearch(usrInput):
     foundWords = []
 
     for word in words:
-        first = int(0)
-        last = int(len(library))
+        first = int(0)  # Making sure its integers.
+        last = int(len(library))  # Making sure its integers.
         found = False
         while first <= last and not found:
             midpoint = int((first + last) // 2)
