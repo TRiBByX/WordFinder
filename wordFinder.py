@@ -10,6 +10,7 @@ def libraryBuilder():
     text = open('words_alpha.txt', 'r').read()
     text = text.replace('\r', '')
     library = text.split('\n')
+    sorted(library)
     return library
 
 
@@ -50,37 +51,26 @@ def findWordinLibraryStandard(usrInput):
 def findWordinLibraryBinarySearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
+
     foundWords = []
-    u_lim = int(len(library))-1
-    l_lim = int(0)
 
     for word in words:
-
-        while l_lim <= u_lim:
-            i = (l_lim + u_lim) // 2
-
-            if library[i] < word:
-                print i, library[i] < word
-                l_lim = i + 1
-            elif library[i] > word:
-                print i, library[i] > word
-                u_lim = i - 1
+        first = int(0)
+        last = int(len(library))
+        found = False
+        while first <= last and not found:
+            midpoint = int((first + last) // 2)
+            w = library[midpoint]
+            if library[midpoint] == word:
+                found = True
             else:
-                foundWords.append(library[i])
-
-        '''
-        while l_lim <= u_lim:
-            i = (l_lim + u_lim) // 2
-            if library[i] == word:
-                foundWords.append(word)
-                break
-            elif library[i] > word:
-                u_lim = i - 1
-            elif library[i] < word:
-                l_lim = i + 1
-        '''
+                if word < library[midpoint]:
+                    last = midpoint - 1
+                else:
+                    first = midpoint + 1
+        if found:
+            foundWords.append(library[midpoint])
     return foundWords
-
 
 # 11 char limit
 if __name__ == '__main__':
