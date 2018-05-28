@@ -27,7 +27,7 @@ def charPermutations(chars):
         words.append(newWord)
     return words
 
-def findWordinLibrary(usrInput):
+def findWordinLibraryStandard(usrInput):
     # Finds if any of the Char Permutations found exists in the library
     # Returns a list of found (if any) words.
     library = libraryBuilder()
@@ -46,12 +46,15 @@ def findWordinLibrary(usrInput):
         print 'No words where found!'
     print '----------------------------------------------------------'
 
+def findWordinLibraryBinarySearch(usrInput):
+    pass
+
 
 if __name__ == '__main__':
     print 'Starting...'
     while True:
         print 'What characters do you want to search for?'
         chars = raw_input()
-        findWordinLibrary(chars)
+        findWordinLibraryStandard(chars)
 
             
