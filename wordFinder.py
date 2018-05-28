@@ -42,6 +42,7 @@ def findWordinLibraryStandard(usrInput):
         print 'No words where found!'
     print '----------------------------------------------------------'
 
+
 def findWordinLibraryBinarySearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
