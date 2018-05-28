@@ -48,6 +48,7 @@ def findWordinLibrary(usrInput):
 
 
 if __name__ == '__main__':
+    print 'Starting...'
     while True:
         print 'What characters do you want to search for?'
         chars = raw_input()
