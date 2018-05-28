@@ -5,6 +5,7 @@ def createList(length):
             nums.append(x)
     return nums
 
+
 def binarySearch(num, nums):
     u_lim = int(len(nums))
     l_lim = int(0)

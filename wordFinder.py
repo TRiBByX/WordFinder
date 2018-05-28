@@ -2,6 +2,7 @@ import itertools
 import re
 import unittest
 
+
 def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
     # Returns a list.
@@ -14,7 +15,6 @@ def libraryBuilder():
 def charPermutations(usrInput):
     # Takes the user input and creates a list of every possible arrangement.
     # Returns a list.
-    # assert any(char.isdigit() == False for char in chars), 'No numbers allowed'
 
     if any(char.isdigit() for char in usrInput):
         raise Exception('no numbers allowed')
@@ -22,6 +22,7 @@ def charPermutations(usrInput):
     words = []
     words = [''.join(p) for p in itertools.permutations(usrInput)]
     return words
+
 
 def findWordinLibraryStandard(usrInput):
     # Finds if any of the Char Permutations found exists in the library
@@ -34,7 +35,7 @@ def findWordinLibraryStandard(usrInput):
         if word in library:
             wordsFound.append(word)
 
-    if wordsFound:    
+    if wordsFound:
         print 'found these words for ya:'
         for word in wordsFound:
             print '....' + word
@@ -77,5 +78,3 @@ if __name__ == '__main__':
             print 'no inputs above 11 chars'
         else:
             print findWordinLibraryBinarySearch(chars)
-
-            
