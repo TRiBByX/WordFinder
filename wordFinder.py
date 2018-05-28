@@ -1,6 +1,4 @@
 import itertools
-import re
-import unittest
 
 
 # Builds a library from txt file.
