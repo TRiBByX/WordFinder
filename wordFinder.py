@@ -8,10 +8,10 @@ def libraryBuilder():
     text = open('sorted_lib.txt', 'r').read()
     # text = text.replace('\r', '')
     library = text.split('\n')
-    
+
     '''
     library = sorted(library)
-    
+
     new_lib = open('sorted_lib.txt', 'w')
     for word in library:
         new_lib.write(word + '\n')
