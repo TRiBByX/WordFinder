@@ -52,6 +52,7 @@ def findWordinLibraryStandard(usrInput):
         return None
 
 
+# Mostly just a test case, but searches through the library linearly. 
 def linearSearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
@@ -99,7 +100,4 @@ if __name__ == '__main__':
         if len(chars) > 11:
             print 'no inputs above 11 chars'
         else:
-            # print 'Linear: ', linearSearch(chars)
-            # print 'hye' > 'hey'
             print 'binary: ', findWordinLibraryBinarySearch(chars)
-            # print 'standard: ', findWordinLibraryStandard(chars)
