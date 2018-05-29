@@ -5,10 +5,18 @@ import itertools
 def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
     # Returns a list.
-    text = open('words_alpha.txt', 'r').read()
-    text = text.replace('\r', '')
+    text = open('sorted_lib.txt', 'r').read()
+    # text = text.replace('\r', '')
     library = text.split('\n')
+    
+    '''
     library = sorted(library)
+    
+    new_lib = open('sorted_lib.txt', 'w')
+    for word in library:
+        new_lib.write(word + '\n')
+    '''
+
     return library
 
 
