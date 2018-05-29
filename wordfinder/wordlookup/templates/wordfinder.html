@@ -2,18 +2,21 @@
 <html>
 <body>
     <div class="form">
+        <h1>Query</h1>
         <form method="POST">
             {% csrf_token %}
             {{wordform.as_p}}
             <br>
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" value='Query'>
         </form>
     </div>
     <div>
-        <table style="width: 50%; border: 1px solid black">
+        <h1>Found words</h1>
+        <p>Search time: {{time}}s</p>
+        <table style="width: 33%; border: 1px solid black">
             <tr>
                 <th style="text-align: left">Index</th>
-                <th style="text-align: left">Word</th>
+                <th style="text-align: left">Permutations</th>
             </tr>
             {% for key, value in words.items %}
                 <tr>

@@ -5,6 +5,8 @@ from django.shortcuts import render
 from . import models, wordFinder
 from django.views import View
 
+import collections
+
 
 class WordFinder(View):
 
@@ -20,10 +22,16 @@ class WordFinder(View):
         if form.is_valid():
             queryWord = form.clean().get('word')
             found = wordFinder.findWordinLibraryBinarySearch(queryWord)
+            # found = wordFinder.linearSearch(queryWord)
+            time = found['time']
+            del found['time']
+            print time
 
+            found = collections.OrderedDict(sorted(found.items()))
             context = {
                 'wordform': models.WordForm(),
                 'words': found,
+                'time': time,
             }
 
         return render(request, 'wordfinder.html', context=context)

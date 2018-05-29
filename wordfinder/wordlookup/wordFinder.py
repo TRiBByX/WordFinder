@@ -1,4 +1,5 @@
 import itertools
+import time
 
 
 # Builds a library from txt file.
@@ -43,11 +44,12 @@ def linearSearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
     wordDict = {}
-
+    xtime = time.time()
     for word in words:
         for x in range(0, len(library)):
             if library[x] == word:
                 wordDict[x] = library[x]
+    wordDict['time'] = time.time() - xtime
     return wordDict
 
 
@@ -76,7 +78,7 @@ def findWordinLibraryBinarySearch(usrInput):
     # words = charPermutations(usrInput)
 
     foundWords = {}
-
+    xtime = time.time()
     for word in itertools.permutations(usrInput):
         word = ''.join(word)
         first = int(0)  # Making sure its integers.
@@ -94,6 +96,8 @@ def findWordinLibraryBinarySearch(usrInput):
                     first = midpoint + 1
         if found:
             foundWords[midpoint] = library[midpoint]
+    xtime = time.time() - xtime
+    foundWords['time'] = xtime
     return foundWords
 
 # 11 char limit
