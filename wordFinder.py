@@ -75,7 +75,7 @@ def findWordinLibraryBinarySearch(usrInput):
     library = libraryBuilder()
     # words = charPermutations(usrInput)
 
-    foundWords = []
+    foundWords = {}
 
     for word in itertools.permutations(usrInput):
         word = ''.join(word)
@@ -93,7 +93,7 @@ def findWordinLibraryBinarySearch(usrInput):
                 else:
                     first = midpoint + 1
         if found:
-            foundWords.append(library[midpoint])
+            foundWords[midpoint] = library[midpoint]
     return foundWords
 
 # 11 char limit
