@@ -5,7 +5,7 @@ import itertools
 def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
     # Returns a list.
-    text = open('sorted_lib.txt', 'r').read()
+    text = open('wordlookup/sorted_lib.txt', 'r').read()
     # text = text.replace('\r', '')
     library = text.split('\n')
 
