@@ -8,7 +8,7 @@ def libraryBuilder():
     text = open('words_alpha.txt', 'r').read()
     text = text.replace('\r', '')
     library = text.split('\n')
-    sorted(library)
+    library = sorted(library)
     return library
 
 
@@ -44,6 +44,18 @@ def findWordinLibraryStandard(usrInput):
         return None
 
 
+def linearSearch(usrInput):
+    library = libraryBuilder()
+    words = charPermutations(usrInput)
+    wordDict = {}
+
+    for word in words:
+        for x in range(0, len(library)):
+            if library[x] == word:
+                wordDict[x] = library[x]
+    return wordDict
+
+
 # Finds words in the library by doing
 # a Binary Search.
 def findWordinLibraryBinarySearch(usrInput):
@@ -57,7 +69,7 @@ def findWordinLibraryBinarySearch(usrInput):
         last = int(len(library))  # Making sure its integers.
         found = False
         while first <= last and not found:
-            midpoint = int((first + last) // 2)
+            midpoint = (first + last) / 2
             w = library[midpoint]
             if library[midpoint] == word:
                 found = True
@@ -79,5 +91,7 @@ if __name__ == '__main__':
         if len(chars) > 11:
             print 'no inputs above 11 chars'
         else:
+            # print 'Linear: ', linearSearch(chars)
+            # print 'hye' > 'hey'
             print 'binary: ', findWordinLibraryBinarySearch(chars)
             # print 'standard: ', findWordinLibraryStandard(chars)
