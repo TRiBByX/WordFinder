@@ -86,7 +86,6 @@ def findWordinLibraryBinarySearch(usrInput):
         found = False
         while first <= last and not found:
             midpoint = (first + last) / 2
-            w = library[midpoint]
             if library[midpoint] == word:
                 found = True
             else:
