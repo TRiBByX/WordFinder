@@ -20,20 +20,6 @@ def libraryBuilder():
     return library
 
 
-# Permuates through the user input to create
-# all possible character combinations.
-def charPermutations(usrInput):
-    # Takes the user input and creates a list of every possible arrangement.
-    # Returns a list.
-
-    if any(char.isdigit() for char in usrInput):
-        raise Exception('no numbers allowed')
-
-    words = []
-    words = [''.join(p) for p in itertools.permutations(usrInput)]
-    return words
-
-
 # Finds words in the library.
 def findWordinLibraryStandard(usrInput):
     # Finds if any of the Char Permutations found exists in the library
@@ -52,7 +38,7 @@ def findWordinLibraryStandard(usrInput):
         return None
 
 
-# Mostly just a test case, but searches through the library linearly. 
+# Mostly just a test case, but searches through the library linearly.
 def linearSearch(usrInput):
     library = libraryBuilder()
     words = charPermutations(usrInput)
@@ -65,15 +51,34 @@ def linearSearch(usrInput):
     return wordDict
 
 
+# Permuates through the user input to create
+# all possible character combinations.
+def charPermutations(usrInput):
+    # Takes the user input and creates a list of every possible arrangement.
+    # Returns a list.
+
+    if any(char.isdigit() for char in usrInput):
+        raise Exception('no numbers allowed')
+
+    words = []
+    words = [''.join(p) for p in itertools.permutations(usrInput)]
+    return words
+
+
 # Finds words in the library by doing
 # a Binary Search.
 def findWordinLibraryBinarySearch(usrInput):
+
+    if any(char.isdigit() for char in usrInput):
+        raise Exception('no numbers allowed')
+
     library = libraryBuilder()
-    words = charPermutations(usrInput)
+    # words = charPermutations(usrInput)
 
     foundWords = []
 
-    for word in words:
+    for word in itertools.permutations(usrInput):
+        word = ''.join(word)
         first = int(0)  # Making sure its integers.
         last = int(len(library))  # Making sure its integers.
         found = False
@@ -97,7 +102,10 @@ if __name__ == '__main__':
     while True:
         print 'What characters do you want to search for?'
         chars = raw_input()
+        print findWordinLibraryBinarySearch(chars)
+        '''
         if len(chars) > 11:
             print 'no inputs above 11 chars'
         else:
             print 'binary: ', findWordinLibraryBinarySearch(chars)
+        '''
