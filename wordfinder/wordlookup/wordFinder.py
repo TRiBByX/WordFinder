@@ -7,16 +7,7 @@ def libraryBuilder():
     # Loads in the words and builds a library (List) of words.
     # Returns a list.
     text = open('wordlookup/sorted_lib.txt', 'r').read()
-    # text = text.replace('\r', '')
     library = text.split('\n')
-
-    '''
-    library = sorted(library)
-
-    new_lib = open('sorted_lib.txt', 'w')
-    for word in library:
-        new_lib.write(word + '\n')
-    '''
 
     return library
 
@@ -70,17 +61,16 @@ def charPermutations(usrInput):
 # Finds words in the library by doing
 # a Binary Search.
 def findWordinLibraryBinarySearch(usrInput):
-
+    usrInput = usrInput.lower()
     if any(char.isdigit() for char in usrInput):
         raise Exception('no numbers allowed')
 
     library = libraryBuilder()
-    # words = charPermutations(usrInput)
+    words = charPermutations(usrInput)
 
     foundWords = {}
     xtime = time.time()
-    for word in itertools.permutations(usrInput):
-        word = ''.join(word)
+    for word in words:
         first = int(0)  # Making sure its integers.
         last = int(len(library))  # Making sure its integers.
         found = False
@@ -105,10 +95,9 @@ if __name__ == '__main__':
     while True:
         print 'What characters do you want to search for?'
         chars = raw_input()
-        print findWordinLibraryBinarySearch(chars)
-        '''
+
         if len(chars) > 11:
             print 'no inputs above 11 chars'
         else:
             print 'binary: ', findWordinLibraryBinarySearch(chars)
-        '''
+
