@@ -23,6 +23,7 @@ class WordFinder(View):
             queryWord = form.clean().get('word')
             found = wordFinder.findWordinLibraryBinarySearch(queryWord)
             # found = wordFinder.linearSearch(queryWord)
+            # found = wordFinder.findWordinLibraryStandard(queryWord)
             time = found['time']
             del found['time']
             print time

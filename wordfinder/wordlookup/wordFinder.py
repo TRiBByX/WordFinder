@@ -18,12 +18,12 @@ def findWordinLibraryStandard(usrInput):
     # Returns a list of found (if any) words.
     library = libraryBuilder()
     possibleWords = charPermutations(usrInput)
-    wordsFound = []
-
+    wordsFound = {}
+    xtime = time.time()
     for word in possibleWords:
         if word in library:
-            wordsFound.append(word)
-
+            wordsFound[library.index(word)] = word
+    wordsFound['time'] = time.time() - xtime
     if wordsFound:
         return wordsFound
     else:
